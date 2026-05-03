@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Expense Tracker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- 1. Dashboard UI -->
+        <header>
+            <h1>Financial Dashboard</h1>
+            <div class="summary-grid">
+                <div class="card"><h3>Balance</h3><p id="balance">₹0.00</p></div>
+                <div class="card income"><h3>Income</h3><p id="total-income">₹0.00</p></div>
+                <div class="card expense"><h3>Expenses</h3><p id="total-expense">₹0.00</p></div>
+            </div>
+        </header>
+
+        <main>
+            <!-- 2. Add Transaction Form -->
+            <section class="form-container">
+                <h2>Add Transaction</h2>
+                <form id="tx-form">
+                    <input type="text" id="title" placeholder="Title" required>
+                    <input type="number" id="amount" placeholder="Amount" required>
+                    <select id="category">
+                        <option value="Food">Food</option>
+                        <option value="Rent">Rent</option>
+                        <option value="Salary">Salary</option>
+                        <!-- More options -->
+                    </select>
+                    <select id="type">
+                        <option value="expense">Expense</option>
+                        <option value="income">Income</option>
+                    </select>
+                    <input type="date" id="date" required>
+                    <button type="submit">Save Transaction</button>
+                </form>
+            </section>
+
+            <!-- 5. Charts / Analytics Placeholder -->
+            <section class="charts">
+                <canvas id="expenseChart"></canvas>
+            </section>
+
+            <!-- 3 & 4. History & Filters -->
+            <section class="history">
+                <div class="history-header">
+                    <h2>Recent Transactions</h2>
+                    <div class="filters">
+                        <input type="text" id="search" placeholder="Search title...">
+                        <select id="filter-category">
+                            <option value="all">All Categories</option>
+                        </select>
+                    </div>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Title</th>
+                            <th>Category</th>
+                            <th>Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tx-list">
+                        <!-- JS will inject rows here -->
+                    </tbody>
+                </table>
+            </section>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

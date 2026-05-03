@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1777791964398,
+    "title": "Groceries",
+    "amount": 1230,
+    "category": "Food",
+    "type": "expense",
+    "date": "2026-05-01"
+  },
+  {
+    "id": 1777791986572,
+    "title": "Crochet",
+    "amount": 200,
+    "category": "Salary",
+    "type": "income",
+    "date": "2026-05-01"
+  }
+]
