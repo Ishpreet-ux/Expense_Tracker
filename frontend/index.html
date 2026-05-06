@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Personal Expense Tracker</title>
+    <title>Personal Expense Tracker | Financial Dashboard</title>
+    <!-- Adding a favicon link makes it look official in the browser tab -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -11,65 +13,100 @@
         <!-- 1. Dashboard UI -->
         <header>
             <h1>Financial Dashboard</h1>
-            <div class="summary-grid">
-                <div class="card"><h3>Balance</h3><p id="balance">₹0.00</p></div>
-                <div class="card income"><h3>Income</h3><p id="total-income">₹0.00</p></div>
-                <div class="card expense"><h3>Expenses</h3><p id="total-expense">₹0.00</p></div>
+            <div class="summary-grid" role="region" aria-label="Financial Summary">
+                <div class="card">
+                    <h3>Current Balance</h3>
+                    <p id="balance" aria-live="polite">₹0.00</p>
+                </div>
+                <div class="card income">
+                    <h3>Total Income</h3>
+                    <p id="total-income" aria-live="polite">₹0.00</p>
+                </div>
+                <div class="card expense">
+                    <h3>Total Expenses</h3>
+                    <p id="total-expense" aria-live="polite">₹0.00</p>
+                </div>
             </div>
         </header>
 
-        <main>
+        <main class="dashboard-layout">
             <!-- 2. Add Transaction Form -->
             <section class="form-container">
                 <h2>Add Transaction</h2>
                 <form id="tx-form">
-                    <input type="text" id="title" placeholder="Title" required>
-                    <input type="number" id="amount" placeholder="Amount" required>
-                    <select id="category">
-                        <option value="Food">Food</option>
-                        <option value="Rent">Rent</option>
-                        <option value="Salary">Salary</option>
-                        <!-- More options -->
-                    </select>
-                    <select id="type">
-                        <option value="expense">Expense</option>
-                        <option value="income">Income</option>
-                    </select>
-                    <input type="date" id="date" required>
-                    <button type="submit">Save Transaction</button>
+                    <div class="input-group">
+                        <label for="title">Description</label>
+                        <input type="text" id="title" placeholder="e.g. Monthly Grocery" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="amount">Amount (₹)</label>
+                        <input type="number" id="amount" placeholder="0.00" step="0.01" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="category">Category</label>
+                        <select id="category">
+                            <option value="Food">Food & Dining</option>
+                            <option value="Rent">Housing/Rent</option>
+                            <option value="Salary">Salary/Income</option>
+                            <option value="Shopping">Shopping</option>
+                            <option value="Travel">Travel</option>
+                        </select>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="type">Transaction Type</label>
+                        <select id="type">
+                            <option value="expense">Expense</option>
+                            <option value="income">Income</option>
+                        </select>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="date">Date</label>
+                        <input type="date" id="date" required>
+                    </div>
+
+                    <button type="submit" class="btn-primary">Save Transaction</button>
                 </form>
             </section>
 
-            <!-- 5. Charts / Analytics Placeholder -->
-            <section class="charts">
-                <canvas id="expenseChart"></canvas>
-            </section>
+            <!-- 3. History & Filters -->
+            <div class="data-view">
+                <!-- 5. Charts / Analytics Placeholder -->
+                <section class="charts card">
+                    <canvas id="expenseChart"></canvas>
+                </section>
 
-            <!-- 3 & 4. History & Filters -->
-            <section class="history">
-                <div class="history-header">
-                    <h2>Recent Transactions</h2>
-                    <div class="filters">
-                        <input type="text" id="search" placeholder="Search title...">
-                        <select id="filter-category">
-                            <option value="all">All Categories</option>
-                        </select>
+                <section class="history">
+                    <div class="history-header">
+                        <h2>Recent Transactions</h2>
+                        <div class="filters">
+                            <input type="text" id="search" placeholder="Search...">
+                            <select id="filter-category">
+                                <option value="all">All Categories</option>
+                            </select>
+                        </div>
                     </div>
-                </div>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Date</th>
-                            <th>Title</th>
-                            <th>Category</th>
-                            <th>Amount</th>
-                        </tr>
-                    </thead>
-                    <tbody id="tx-list">
-                        <!-- JS will inject rows here -->
-                    </tbody>
-                </table>
-            </section>
+                    
+                    <div class="table-responsive">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Title</th>
+                                    <th>Category</th>
+                                    <th class="text-right">Amount</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tx-list">
+                                <!-- JS will inject rows here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </div>
         </main>
     </div>
     <script src="script.js"></script>

@@ -14,5 +14,21 @@
     "category": "Salary",
     "type": "income",
     "date": "2026-05-01"
+  },
+  {
+    "id": 1777824781125,
+    "title": "grocerry",
+    "amount": 1266,
+    "category": "Food",
+    "type": "expense",
+    "date": "2026-05-03"
+  },
+  {
+    "id": 1777824822893,
+    "title": "salary",
+    "amount": 300000,
+    "category": "Salary",
+    "type": "income",
+    "date": "2026-05-04"
   }
 ]
